@@ -1,0 +1,22 @@
+<svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M27.4165 24.0814C24.9166 25.7484 21.8903 29.0454 20.75 34.0834M22.4166 29.6454C18.4702 20.7677 26.4311 17.7735 32.4905 17.4407C33.2218 17.4005 33.5874 17.3804 33.85 17.6394C34.1126 17.8984 34.0975 18.2677 34.0672 19.0062C33.8157 25.1467 31.2977 33.5952 22.4166 29.6454Z" stroke="url(#paint0_linear_1129_1075)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.75 30.75H7.45165C3.6417 30.75 1.73672 30.75 1.00309 29.5258C0.269463 28.3016 1.18751 26.6547 3.0236 23.3609L5.40308 19.0923C6.63515 16.8821 7.25118 15.777 8.21539 15.7505C9.17961 15.724 9.8571 16.7935 11.2121 18.9325L12.3809 20.7777" stroke="url(#paint1_linear_1129_1075)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10.75 10.8064L12.4028 7.67551C14.8377 3.06295 16.0551 0.756673 17.9048 0.750014C19.7545 0.743356 20.9866 3.04082 23.4507 7.63574L23.8579 8.39515C25.3868 11.2461 26.1512 12.6716 25.5379 13.5582C24.9247 14.4448 23.4206 14.0886 20.4125 13.3763L20.2751 13.3438" stroke="url(#paint2_linear_1129_1075)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<defs>
+<linearGradient id="paint0_linear_1129_1075" x1="27.4167" y1="17.4167" x2="36.138" y2="24.3938" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F5E7DC"/>
+<stop offset="0.480769" stop-color="#C5AB9D"/>
+<stop offset="1" stop-color="#8A624C"/>
+</linearGradient>
+<linearGradient id="paint1_linear_1129_1075" x1="8.25" y1="15.75" x2="16.2955" y2="23.7955" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F5E7DC"/>
+<stop offset="0.480769" stop-color="#C5AB9D"/>
+<stop offset="1" stop-color="#8A624C"/>
+</linearGradient>
+<linearGradient id="paint2_linear_1129_1075" x1="18.25" y1="0.75" x2="25.3522" y2="8.73997" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F5E7DC"/>
+<stop offset="0.480769" stop-color="#C5AB9D"/>
+<stop offset="1" stop-color="#8A624C"/>
+</linearGradient>
+</defs>
+</svg>
