@@ -7,35 +7,33 @@ const LogoMarquee = () => {
     <div
       className="flex flex-col 
       border border-solid
-      [border-image-source:linear-gradient(90deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.36)_50%,rgba(255,255,255,0)_100%)]
-      [border-image-slice:1]
+      logo-marquee-border
     md:border-0
     md:flex-row justify-center items-center w-full md:w-3xl md:h-22   "
     >
       <div className="h-full">
-        <img src="/served_best.svg" alt="Server-Best" className="h-full w-49" />
+        <img
+          src="/served_best.svg"
+          alt="Server-Best"
+          className="h-full w-49 served-best-logo"
+        />
       </div>
       <div
-        className="h-full  flex justify-center items-center py-6 w-screen
+        className="h-full flex justify-center items-center py-6 w-screen
       md:w-xl  
       md:py-0
       md:border border-solid
-      md:[border-image-source:linear-gradient(90deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.36)_50%,rgba(255,255,255,0)_100%)]
-      md:[border-image-slice:1]
+      logo-marquee-inner-border
       "
       >
-        <Marquee
-          pauseOnHover={true}
-          gradient={true}
-          gradientColor={"#000000"}
-          gradientWidth={88}
-        >
+        <Marquee pauseOnHover={true} gradient={false}>
           {SERVED_BRANDS.map((item, index) => {
             return (
               <img
+                key={index}
                 src={item.imagePath}
                 alt={item.name}
-                className="h-10 w-full mx-10"
+                className="h-10 w-full mx-10 brand-logo"
               />
             );
           })}

@@ -3,14 +3,28 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function CustomDropdown({ label, value, onChange, options }) {
+type CustomDropdownProps = {
+  label?: string;
+  value: string;
+  onChange: (value: string) => void;
+  options: string[];
+};
+
+export default function CustomDropdown({
+  label,
+  value,
+  onChange,
+  options,
+}: CustomDropdownProps) {
   const [open, setOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("Select Locality");
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    function handleClickOutside(e) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+    function handleClickOutside(e: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target as Node)
+      ) {
         setOpen(false);
       }
     }
@@ -20,27 +34,20 @@ export default function CustomDropdown({ label, value, onChange, options }) {
   }, []);
 
   return (
-    <div className="relative " ref={dropdownRef}>
-      {/* Label */}
-      {/* <label className="block text-xs uppercase text-gray-400 mb-1">
-        {label}
-      </label> */}
-
+    <div className="relative" ref={dropdownRef}>
       {/* Dropdown Box */}
       <div
         onClick={() => setOpen(!open)}
-        className=" 
-          w-full 
-          text-[16px]
-          bg-transparent 
-          border-b border-white/20 
-          py-1
-          text-gray-400 
-          cursor-pointer
-          flex justify-between items-center  
-        "
+        className="w-full text-[16px] bg-transparent border-b py-1 cursor-pointer flex justify-between items-center"
+        style={{
+          borderColor: "var(--st-border)",
+        }}
       >
-        <span className={!value ? "text-[#7A7A7A]" : "text-[#C5C5C5]"}>
+        <span
+          style={{
+            color: !value ? "var(--st-text-muted)" : "var(--st-text-secondary)",
+          }}
+        >
           {value === "" ? "Select Locality" : value}
         </span>
 
@@ -61,17 +68,11 @@ export default function CustomDropdown({ label, value, onChange, options }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -5 }}
             transition={{ duration: 0.2 }}
-            className="
-              absolute 
-              left-0 
-              right-0 
-              bg-[#111] 
-              border border-white/10 
-              rounded-lg 
-              mt-2 
-              shadow-xl 
-              z-50 
-            "
+            className="absolute left-0 right-0 border rounded-lg mt-2 shadow-xl z-50"
+            style={{
+              backgroundColor: "var(--st-bg-card-secondary)",
+              borderColor: "var(--st-border)",
+            }}
           >
             {options.map((opt) => (
               <li
@@ -80,13 +81,17 @@ export default function CustomDropdown({ label, value, onChange, options }) {
                   onChange(opt);
                   setOpen(false);
                 }}
-                className="
-                  px-4 py-2 
-                  text-white
-                  hover:bg-white/10 
-                  cursor-pointer 
-                  text-sm
-                "
+                className="px-4 py-2 cursor-pointer text-sm transition-colors duration-200"
+                style={{
+                  color: "var(--st-text-primary)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor =
+                    "rgba(255, 255, 255, 0.1)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "transparent";
+                }}
               >
                 {opt}
               </li>

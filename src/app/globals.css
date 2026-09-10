@@ -4,17 +4,38 @@
   --background: #ffffff;
   --foreground: #171717;
   --font-title: var(--font-awesome-serif);
+
+  --st-bg-page: #000000;
+  --st-bg-card: #050505;
+  --st-bg-card-secondary: #0f0f0f;
+  --st-bg-header: rgba(0, 0, 0, 0.51);
+  --st-border: #292929;
+  --st-border-hover: #444444;
+  --st-text-primary: #bbbbbb;
+  --st-text-secondary: #c5c5c5;
+  --st-text-muted: #7f7f7f;
+  --st-btn-bg: #2b1e15;
+  --st-btn-text: #ffffff;
+  --st-accent-start: #f8ac75;
+  --st-accent-end: #926545;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  /* Custom Colors */
-  --color-stblack: #000000;
-  --color-sttext: #BBBBBB;
-  --color-stbuttonbg: #2B1E15;
+html.light {
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --st-bg-page: #ffffff;
+  --st-bg-card: #ffffff;
+  --st-bg-card-secondary: #f5f5f5;
+  --st-bg-header: rgba(255, 255, 255, 0.8);
+  --st-border: #e0e0e0;
+  --st-border-hover: #c0c0c0;
+  --st-text-primary: #1a1a1a;
+  --st-text-secondary: #3d3d3d;
+  --st-text-muted: #6b6b6b;
+  --st-btn-bg: #5c3a1e;
+  --st-btn-text: #ffffff;
+  --st-accent-start: #d87a3a;
+  --st-accent-end: #5c3a1e;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,9 +46,20 @@
   }
 }
 
+/* stylelint-disable-next-line at-rule-no-unknown */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-stblack: #000000;
+  --color-sttext: #bbbbbb;
+  --color-stbuttonbg: #2b1e15;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--st-bg-page);
+  color: var(--st-text-primary);
   font-family: var(--font-figTree);
 }
 
@@ -48,14 +80,292 @@ body {
   border: 1px solid green;
 }
 
-
-
 .scroll-container::-webkit-scrollbar {
   display: none;
-
 }
 
 .line {
-  border: 1px solid #AFAFAF;
+  border: 1px solid #afafaf;
   padding-top: 4px;
+}
+
+.page-heading-2-gradient {
+  background-image: linear-gradient(
+    135deg,
+    #ffffff 50%,
+    #9c9c9c 33.64%,
+    #d7d7d7 33.64%
+  );
+}
+
+html.light .page-heading-2-gradient {
+  background-image: linear-gradient(
+    135deg,
+    #1a1a1a 50%,
+    #5c3a1e 33.64%,
+    #3d3d3d 33.64%
+  );
+}
+
+.banner-heading-gradient {
+  background-image: linear-gradient(
+    135deg,
+    #ffffff 25%,
+    #9c9c9c 43.31%,
+    #d7d7d7 78.64%
+  );
+}
+
+html.light .banner-heading-gradient {
+  background-image: linear-gradient(
+    135deg,
+    #1a1a1a 25%,
+    #3d3d3d 43.31%,
+    #1a1a1a 78.64%
+  );
+}
+
+html.light #aboutUs .our-story-image {
+  filter: invert(1) hue-rotate(180deg) saturate(0.3) brightness(0.9);
+  border-radius: 4px;
+}
+
+.logo-marquee-border {
+  border-image-source: linear-gradient(
+    90deg,
+    rgba(128, 128, 128, 0) 0%,
+    rgba(128, 128, 128, 0.36) 50%,
+    rgba(128, 128, 128, 0) 100%
+  );
+  border-image-slice: 1;
+}
+
+.logo-marquee-inner-border {
+  border-image-source: linear-gradient(
+    90deg,
+    rgba(128, 128, 128, 0) 0%,
+    rgba(128, 128, 128, 0.36) 50%,
+    rgba(128, 128, 128, 0) 100%
+  );
+  border-image-slice: 1;
+}
+
+html.light .brand-logo {
+  filter: invert(1) brightness(0.15);
+}
+
+html.light .served-best-logo {
+  content: url("/served-best.png");
+}
+
+html.light .footer-icon {
+  filter: invert(1) sepia(1) hue-rotate(-12deg) saturate(1.5) brightness(1.2);
+}
+
+html.light .vision-linkedin-icon {
+  filter: invert(1) sepia(1) hue-rotate(-12deg) saturate(1.5) brightness(1.2);
+}
+
+/* Vision section founder image theming */
+.vision-founder-dark {
+  display: block;
+}
+.vision-founder-light {
+  display: none;
+}
+
+html.light .vision-founder-dark {
+  display: none;
+}
+html.light .vision-founder-light {
+  display: block;
+}
+
+.vision-founder-light-fade {
+  display: none;
+}
+
+html.light .vision-founder-light-fade {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 35%;
+  background: linear-gradient(to bottom, transparent 0%, #ffffff 100%);
+  pointer-events: none;
+}
+
+html.light .footer-logo {
+  content: url("/footer-logo-light.svg");
+}
+
+html.light .header-logo {
+  content: url("/logo-light.svg");
+}
+
+/* Wrapper fades the logo edges into the card — both themes */
+.footer-logo-wrap {
+  -webkit-mask-image:
+    linear-gradient(
+      to right,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 20%,
+      black 72%,
+      transparent 100%
+    );
+  mask-image:
+    linear-gradient(
+      to right,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 20%,
+      black 72%,
+      transparent 100%
+    );
+  -webkit-mask-composite: intersect;
+  mask-composite: intersect;
+}
+
+.footer-logo {
+  display: block;
+}
+
+.footer-bg-card {
+  background-image: url("/footer-bg.svg");
+}
+
+html.light .footer-bg-card {
+  background-image: url("/footer-bg-light.svg");
+}
+
+/* Popup floating button logo — flash-free CSS switching.
+   Both img tags always in DOM; html.light class (set synchronously before
+   first paint by the inline <script> in <head>) controls which is visible. */
+
+.popup-logo-dark {
+  display: block;
+}
+
+.popup-logo-light {
+  display: none;
+}
+
+html.light .popup-logo-dark {
+  display: none;
+}
+
+html.light .popup-logo-light {
+  display: block;
+}
+
+html.light .mini-popup-icon {
+  filter: invert(1) brightness(0.15);
+}
+
+html.light .popup-cross-icon {
+  filter: invert(1) brightness(0.15);
+}
+
+.banner-light-logo {
+  filter: saturate(3) brightness(0.55) contrast(1.4);
+}
+
+html.light .slider-nav-icon {
+  filter: none;
+}
+
+html.light .services-nav-icon {
+  filter: invert(1) sepia(1) hue-rotate(340deg) saturate(3) brightness(0.35);
+}
+
+html.light .service-card-icon {
+  filter: invert(1) sepia(1) hue-rotate(340deg) saturate(3) brightness(0.35);
+}
+
+/* Service detail page — back arrow icon */
+html.light .service-detail-back-icon {
+  filter: invert(1) sepia(1) hue-rotate(340deg) saturate(3) brightness(0.35);
+}
+
+/* Icon gradient wrapper — dark theme: no-op, icon shows as-is */
+.icon-gradient-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon container dark theme glow */
+.icon-container {
+  box-shadow: 0 0 72px 4px #ffc09233;
+}
+
+/* Light theme: render icon as gradient mask */
+html.light .icon-gradient-wrapper {
+  position: relative;
+}
+
+html.light .icon-gradient-wrapper img,
+html.light .icon-gradient-wrapper span img {
+  /* Make the img act as a mask source — hide original */
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+}
+
+html.light .icon-gradient-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    var(--st-accent-start),
+    var(--st-accent-end)
+  );
+  /* Use the icon as mask so gradient fills icon shape */
+  -webkit-mask-image: var(--icon-mask);
+  mask-image: var(--icon-mask);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+/* Light theme container: swap dark glow for a warm brown shadow */
+html.light .icon-container {
+  box-shadow: 0 0 32px 4px rgba(92, 58, 30, 0.18);
+}
+
+*,
+*::before,
+*::after {
+  transition:
+    background-color 250ms ease,
+    color 250ms ease,
+    border-color 250ms ease,
+    background-image 250ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none;
+  }
 }

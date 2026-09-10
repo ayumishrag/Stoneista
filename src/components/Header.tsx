@@ -1,6 +1,7 @@
 "use client";
 import HeaderLink from "@/UI/HeaderLink";
 import PrimaryHeaderButton from "@/UI/PrimaryHeaderButton";
+import ThemeToggle from "@/UI/ThemeToggle";
 import Link from "next/link";
 import { useState } from "react";
 import { usePopup } from "@/components/PopupContext";
@@ -23,15 +24,20 @@ export default function Header() {
       <header
         className="w-screen fixed top-0 px-4 h-20 py-3
         md:px-20 md:py-4
-        bg-[#00000082] backdrop-blur-[56px] text-sttext flex flex-row justify-between items-center border border-solid
+        backdrop-blur-[56px] text-(--st-text-primary) flex flex-row justify-between items-center border border-solid
         [border-image-source:linear-gradient(90deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.36)_50%,rgba(255,255,255,0)_100%)]
         [border-image-slice:1] z-50
         "
+        style={{ background: "var(--st-bg-header)" }}
       >
         {/* LEFT — Logo */}
         <div className="flex-1">
           <Link href={"/"}>
-            <img src="/logo.svg" alt="Logo" className="h-6 w-auto" />
+            <img
+              src="/logo.svg"
+              alt="Logo"
+              className="h-6 w-auto header-logo"
+            />
           </Link>
         </div>
 
@@ -44,8 +50,8 @@ export default function Header() {
           </nav>
         </div>
 
-        {/* RIGHT — Button (hidden on mobile, visible on md+) */}
-        <div className="md:flex md:flex-1 justify-end">
+        {/* RIGHT — Button group (hidden on mobile, visible on md+) */}
+        <div className="hidden md:flex md:flex-1 justify-end items-center gap-2">
           <PrimaryHeaderButton
             onClick={() => {
               setMode("service");
@@ -53,6 +59,7 @@ export default function Header() {
             }}
             text={"book service"}
           />
+          <ThemeToggle />
         </div>
 
         {/* MOBILE MENU ICON */}
@@ -64,11 +71,12 @@ export default function Header() {
       </header>
       {isOpen && (
         <div
-          className="w-screen fixed top-20 left-0 bg-[#000000e0] backdrop-blur-xl flex flex-col items-center gap-6 py-8 md:hidden z-40
-        border-b border-solid
-        [border-image-source:linear-gradient(90deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.36)_50%,rgba(255,255,255,0)_100%)]
-        [border-image-slice:1]
-        "
+          className="w-screen fixed top-20 left-0 backdrop-blur-xl flex flex-col items-center gap-6 py-8 md:hidden z-40
+          border-b border-solid
+          [border-image-source:linear-gradient(90deg,rgba(128,128,128,0)_0%,rgba(128,128,128,0.36)_50%,rgba(128,128,128,0)_100%)]
+          [border-image-slice:1]
+          "
+          style={{ background: "var(--st-bg-header)" }}
         >
           {HEADER_LINKS_DATA.map((item, index) => (
             <HeaderLink
@@ -81,6 +89,7 @@ export default function Header() {
               }}
             />
           ))}
+          <ThemeToggle />
         </div>
       )}
     </>

@@ -24,7 +24,9 @@ const Services = () => {
   const next = () => {
     setDirection("right");
     setCurrent((prev) =>
-      prev + itemsPerSlide >= homePageServices.length ? 0 : prev + itemsPerSlide
+      prev + itemsPerSlide >= homePageServices.length
+        ? 0
+        : prev + itemsPerSlide,
     );
   };
 
@@ -32,7 +34,7 @@ const Services = () => {
   const prev = () => {
     setDirection("left");
     setCurrent((prev) =>
-      prev === 0 ? (totalSlides - 1) * itemsPerSlide : prev - itemsPerSlide
+      prev === 0 ? (totalSlides - 1) * itemsPerSlide : prev - itemsPerSlide,
     );
   };
 
@@ -63,12 +65,16 @@ const Services = () => {
         {/* LEFT ARROW */}
         <button
           onClick={prev}
-          className="absolute left-0 cursor-pointer md:-left-3 flex items-center justify-center md:p-3 p-2.5 rounded-full border border-[#2A2A2A]  transition"
+          className="absolute left-0 cursor-pointer md:-left-3 flex items-center justify-center md:p-3 p-2.5 rounded-full border transition"
+          style={{
+            borderColor: "var(--st-border)",
+            backgroundColor: "var(--st-bg-card)",
+          }}
         >
           <img
             src="/icons/prev.svg"
             alt="prev"
-            className="md:h-5 md:w-5 h-3 w-3  "
+            className="md:h-5 md:w-5 h-3 w-3 services-nav-icon"
           />
         </button>
 
@@ -109,12 +115,16 @@ const Services = () => {
         {/* RIGHT ARROW */}
         <button
           onClick={next}
-          className="absolute right-0 cursor-pointer md:-right-3 flex items-center justify-center md:p-3 p-2.5 rounded-full border border-[#2A2A2A]     transition"
+          className="absolute right-0 cursor-pointer md:-right-3 flex items-center justify-center md:p-3 p-2.5 rounded-full border transition"
+          style={{
+            borderColor: "var(--st-border)",
+            backgroundColor: "var(--st-bg-card)",
+          }}
         >
           <img
             src="/icons/next.svg"
             alt="next"
-            className="md:h-5 md:w-5 h-3 w-3   "
+            className="md:h-5 md:w-5 h-3 w-3 services-nav-icon"
           />
         </button>
       </div>

@@ -13,9 +13,8 @@ const PageName: React.FC<PageNameProps> = ({ text, width }) => {
           inline-block
           text-transparent
           bg-clip-text
-          bg-[linear-gradient(135deg,#F5E7DC_25%,#C5AB9D_50.79%,#8A624C_78.64%)]
+          page-name-gradient
           font-semibold
-           
           tracking-[0.07em]
           "
     >

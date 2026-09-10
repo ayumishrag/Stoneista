@@ -14,7 +14,7 @@ const Blogs = () => {
       </div>
       <div className="w-full">
         <div className="hidden md:flex flex-row justify-center items-center">
-          <Marquee gradient={true} gradientColor={"#000000"} gradientWidth={88}>
+          <Marquee gradient={false} gradientWidth={88}>
             {BLOGS_DATA.map((item, index) => {
               return (
                 <BlogCard
@@ -31,7 +31,12 @@ const Blogs = () => {
         <div className="md:hidden flex-col gap-4">
           {BLOGS_DATA.map((item, index) => {
             return (
-              <BlogCard key={index} image={item.imagePath} quote={item.quote} slug={item.slug} />
+              <BlogCard
+                key={index}
+                image={item.imagePath}
+                quote={item.quote}
+                slug={item.slug}
+              />
             );
           })}
         </div>

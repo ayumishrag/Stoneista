@@ -92,9 +92,14 @@ const CustomCarousel: React.FC<CustomCarouselProps> = ({ children }) => {
           e.preventDefault();
           slideNext();
         }}
-        className="absolute right-4 cursor-pointer flex items-center justify-center p-3 rounded-full border border-white] transition"
+        className="absolute right-4 cursor-pointer flex items-center justify-center p-3 rounded-full border transition"
+        style={{ borderColor: "var(--st-border)" }}
       >
-        <img src="/icons/next.svg" alt="next" className="h-5 w-5   " />
+        <img
+          src="/icons/next.svg"
+          alt="next"
+          className="h-5 w-5 slider-nav-icon"
+        />
       </button>
 
       <button
@@ -102,9 +107,14 @@ const CustomCarousel: React.FC<CustomCarouselProps> = ({ children }) => {
           e.preventDefault();
           slidePrev();
         }}
-        className="absolute left-4 cursor-pointer flex items-center justify-center p-3 rounded-full border border-white transition"
+        className="absolute left-4 cursor-pointer flex items-center justify-center p-3 rounded-full border transition"
+        style={{ borderColor: "var(--st-border)" }}
       >
-        <img src="/icons/prev.svg" alt="prev" className="h-5 w-5  " />
+        <img
+          src="/icons/prev.svg"
+          alt="prev"
+          className="h-5 w-5 slider-nav-icon"
+        />
       </button>
 
       {/* <button

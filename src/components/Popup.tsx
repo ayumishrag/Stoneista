@@ -256,6 +256,7 @@
 import { useState, useEffect } from "react";
 import { sendWelcomeEmail } from "../components/action";
 import { usePopup } from "@/components/PopupContext";
+import { useTheme } from "@/context/ThemeContext";
 import MiniPopup from "@/components/MiniPopup";
 import CustomDropdown from "./DropDown";
 import { TESTIMONIALS_DATA2 } from "@/constant/testimonials";
@@ -264,6 +265,7 @@ import PopupHeading from "@/UI/PopupHeading";
 
 export default function Popup() {
   const { open, setOpen, mode } = usePopup();
+  const { theme } = useTheme();
   const [openMini, setOpenMini] = useState(false);
 
   const [name, setName] = useState("");
@@ -313,7 +315,7 @@ export default function Popup() {
       const response = await sendWelcomeEmail(
         body,
         "New Callback Request",
-        "sales@stoneista.com"
+        "sales@stoneista.com",
       );
 
       if (response.ok) {
@@ -330,13 +332,12 @@ export default function Popup() {
   return (
     <>
       {/* Floating Button */}
-      {/* Floating Button */}
       <button
         onClick={() => setOpenMini((prev) => !prev)}
         className="
-    fixed bottom-10 right-10 z-[9999]
+    fixed bottom-10 right-10 z-9999
     h-20 w-20 rounded-full
-    bg-black border border-white/40
+    bg-(--st-bg-page) border border-white/40
     shadow-xl
     overflow-hidden
     transition-all duration-500 
@@ -344,19 +345,32 @@ export default function Popup() {
       >
         <div
           className={`
-      flex items-center h-full w-[160px]
+      flex items-center h-full w-40
       transition-transform duration-500 ease-in-out
       ${openMini ? "-translate-x-20" : "translate-x-0"}
     `}
         >
           {/* Logo */}
-          <div className="h-20 w-20 flex items-center justify-center shrink-0">
-            <img src="/app-icon.svg" alt="Logo" className="h-8 w-8" />
+          <div className="h-20 w-20 flex items-center justify-center shrink-0 relative">
+            <img
+              src="/app-icon.svg"
+              alt="Logo"
+              className="popup-logo-dark h-8 w-8"
+            />
+            <img
+              src="/app-icon-light.svg"
+              alt="Logo"
+              className="popup-logo-light h-8 w-8 absolute"
+            />
           </div>
 
           {/* Cross */}
           <div className="h-20 w-20 flex items-center justify-center shrink-0">
-            <img src="/cross1.png" alt="Close" className="h-6 w-6" />
+            <img
+              src="/cross1.png"
+              alt="Close"
+              className="h-6 w-6 popup-cross-icon"
+            />
           </div>
         </div>
       </button>
@@ -366,11 +380,11 @@ export default function Popup() {
       {/* MAIN POPUP */}
       {open && (
         <div
-          className="fixed inset-0 bg-black/40 z-[9999] flex items-center justify-center p-4 "
+          className="fixed inset-0 bg-black/40 z-9999 flex items-center justify-center p-4"
           onClick={() => setOpen(false)}
         >
           <div
-            className=" w-full max-w-[700px] bg-[#3C2517] flex flex-col md:flex-row rounded-xl"
+            className="w-full max-w-175 bg-(--st-btn-bg) flex flex-col md:flex-row rounded-xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* FORM SIDE */}
@@ -378,44 +392,43 @@ export default function Popup() {
               className=" 
                 relative
                 order-1 md:order-2
-                w-full sm:w-[350px] md:w-[380px]
-                bg-[#050505]
-                text-white
+                w-full sm:w-87.5 md:w-95
+                bg-(--st-bg-card)
+                text-(--st-text-primary)
                 shadow-2xl
                 rounded-base
                 py-6 px-4
-                border border-white/20
+                border border-(--st-border)
                 mt-3 mr-3 mb-2
               "
             >
               {/* Close Button */}
               <button
                 onClick={() => setOpen(false)}
-                className="absolute top-4 right-4 text-3xl text-white/70 hover:text-white z-20 cursor-pointer"
+                className="absolute top-4 right-4 text-3xl text-(--st-text-muted) hover:text-(--st-text-primary) z-20 cursor-pointer"
               >
                 &times;
               </button>
 
               {/* FORM CONTENT */}
-              {/* <PopupHeading text="Bring Back the Shine to Your Home." /> */}
               <p
                 className="text-2xl font-awesome
           w-full
           inline-block
           text-transparent
           bg-clip-text
-          bg-[linear-gradient(135deg,#FFFFFF_50%,#9C9C9C_33.64%,#D7D7D7_33.64%)] pb-8 pt-8 "
+          page-heading-2-gradient pb-8 pt-8 "
               >
                 Bring Back the <br /> Shine to Your Home.
               </p>
 
               <form
                 onSubmit={handleSubmit}
-                className="space-y-6 text-[#C5C5C5] "
+                className="space-y-6 text-(--st-text-secondary)"
               >
                 <div>
                   <input
-                    className="w-full bg-transparent border-b border-white/20 pb-2 bg-black"
+                    className="w-full bg-transparent border-b border-(--st-border) pb-2"
                     placeholder="Name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -426,7 +439,7 @@ export default function Popup() {
                 <div>
                   <input
                     type="email"
-                    className="w-full bg-transparent border-b border-white/20 pb-2 bg-black"
+                    className="w-full bg-transparent border-b border-(--st-border) pb-2"
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -437,7 +450,7 @@ export default function Popup() {
                 <div>
                   <input
                     maxLength={10}
-                    className="w-full bg-transparent border-b border-white/20 pb-2 bg-black"
+                    className="w-full bg-transparent border-b border-(--st-border) pb-2"
                     placeholder="+91 Phone Number"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
@@ -458,7 +471,7 @@ export default function Popup() {
 
                 <button
                   type="submit"
-                  className=" mt-5 mb-8 text-xs font-extrabold bg-stbuttonbg px-6 h-12 border
+                  className=" mt-5 mb-8 text-xs font-extrabold bg-(--st-btn-bg) text-(--st-btn-text) px-6 h-12 border
                   [border-image-source:linear-gradient(90deg,#F8AC75_0%,#926545_100%)]
                   [border-image-slice:1] cursor-pointer"
                 >
@@ -473,9 +486,8 @@ export default function Popup() {
                 <div
                   className="
                     absolute inset-0
-                    bg-[#050505]
-                    flex flex-col   justify-center
-                    
+                    bg-(--st-bg-card)
+                    flex flex-col justify-center
                     rounded-base
                     z-10  
                   "
@@ -483,11 +495,13 @@ export default function Popup() {
                   {mode === "service" ? (
                     <>
                       <h2 className="ml-10 font-awesome text-[30px] font-semibold mb-2">
-                      We appreciate your interest in Stoneista.<br />
+                        We appreciate your interest in Stoneista.
+                        <br />
                       </h2>
 
                       <p className="ml-10 font-figTree text-base opacity-80">
-                      Our team will connect with you shortly to assist further.
+                        Our team will connect with you shortly to assist
+                        further.
                       </p>
                     </>
                   ) : (
@@ -497,18 +511,14 @@ export default function Popup() {
                       </h2>
 
                       <p
-                        className="ml-10 font-figTree text-base mt-2 opacity-80 cursor-pointer  "
+                        className="ml-10 font-figTree text-base mt-2 opacity-80 cursor-pointer"
                         onClick={downloadBrochure}
                       >
-                        If download hasn’t started,
+                        If download hasn't started,
                         <span className="underline">Click Here</span>
                       </p>
                     </>
                   )}
-
-                  {/* <p className="ml-10 text-sm opacity-80">
-                    Someone from our sales team will call you.
-                  </p> */}
                 </div>
               )}
             </div>
@@ -521,14 +531,16 @@ export default function Popup() {
                 gap-4
                 w-full md:w-auto
                 bg-[url('/formImage.svg')]
-                bg-contain bg-no-repeat   round rounded-xl
+                bg-contain bg-no-repeat rounded-xl
               "
             >
               {TESTIMONIALS_DATA2.map((item, index) => (
-                <div key={index} className="p-3  ">
-                  <div className="   md:mt-80 h-[10.8rem] md:w-[18.5rem] bg-[#00000080] p-6 rounded border border-white/80 backdrop-blur-lg">
-                    <h1 className="font-awesome text-xl text-white">{item.quote}</h1>
-                    <p className="text-xs font-semibold text-gray-300 mt-4">
+                <div key={index} className="p-3">
+                  <div className="md:mt-80 h-[10.8rem] md:w-74 bg-(--st-bg-header) p-6 rounded border border-(--st-border) backdrop-blur-lg">
+                    <h1 className="font-awesome text-xl text-(--st-text-primary)">
+                      {item.quote}
+                    </h1>
+                    <p className="text-xs font-semibold text-(--st-text-secondary) mt-4">
                       {item.author}
                     </p>
                   </div>
