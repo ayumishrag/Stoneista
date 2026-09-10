@@ -25,7 +25,7 @@ const Gallery = () => {
                   className="h-full w-full mb-4"
                 />
                 <div className="flex flex-row justify-center items-center px-3">
-                  <h1 className="text-sm font-semibold text-transparent bg-clip-text [background-image:linear-gradient(135deg,_#FFFFFF_25%,_#9C9C9C_43.31%,_#D7D7D7_78.64%)]">
+                  <h1 className="text-sm font-semibold text-transparent bg-clip-text banner-heading-gradient">
                     {image.imageLabel.toUpperCase()}
                   </h1>
                 </div>

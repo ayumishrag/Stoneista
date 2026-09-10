@@ -3,22 +3,19 @@ import BlogCard from "./BlogCard";
 import Marquee from "react-fast-marquee";
 import PageHeading from "@/UI/PageHeading";
 import PageName from "@/UI/PageName";
+import { getPayload } from "payload";
+import config from "@payload-config";
 
 async function getBlogs() {
   try {
-    const res = await fetch("http://localhost:3000/api/posts?depth=1", {
-      cache: "no-store",
+    const payload = await getPayload({ config });
+    const data = await payload.find({
+      collection: "posts",
+      depth: 1,
     });
-
-    if (!res.ok) {
-      console.error("Failed to fetch blogs:", res.status);
-      return [];
-    }
-
-    const data = await res.json();
     return Array.isArray(data.docs) ? data.docs : [];
   } catch (error) {
-    console.error("Fetch failed:", error);
+    console.error("Failed to fetch blogs:", error);
     return [];
   }
 }
@@ -55,7 +52,6 @@ const Blogs = async () => {
 
         {/* MOBILE */}
         <div className="md:hidden flex flex-col gap-4">
-          
           {blogs.map((item: any, index: number) => (
             <BlogCard
               key={index}

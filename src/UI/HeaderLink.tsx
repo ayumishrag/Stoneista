@@ -60,12 +60,10 @@ const HeaderLink: React.FC<HeaderLinkProps> = ({ text, href, onClick }) => {
       } else {
         // Navigate to home page, then scroll after page loads
         router.push("/");
-        // Use a more reliable method: wait for next tick and check if we're on home
         const checkAndScroll = () => {
           if (window.location.pathname === "/") {
             scrollToSection(text);
           } else {
-            // If not yet navigated, try again
             setTimeout(checkAndScroll, 50);
           }
         };
@@ -84,8 +82,14 @@ const HeaderLink: React.FC<HeaderLinkProps> = ({ text, href, onClick }) => {
 
   return (
     <button
-      className={`mx-4 text-xs font-extrabold cursor-pointer py-4 text-white md:text-[#BBBBBB]
-        hover:text-white`}
+      className="mx-4 text-xs font-extrabold cursor-pointer py-4 header-link"
+      style={{ color: "var(--st-text-primary)" }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.color = "var(--st-accent-start)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.color = "var(--st-text-primary)";
+      }}
       onClick={handleClick}
     >
       {text.toUpperCase()}

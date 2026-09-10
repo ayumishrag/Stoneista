@@ -8,10 +8,12 @@ import SecondaryButton from "@/UI/SecondaryButton";
 import { usePopup } from "@/components/PopupContext";
 import { useRouter } from "next/navigation";
 import LogoMarquee from "@/components/LogoMarquee";
+import { useTheme } from "@/context/ThemeContext";
 
 const Locations = () => {
   const router = useRouter();
   const { setOpen, setMode } = usePopup();
+  const { theme } = useTheme();
 
   // Map location names to their brand icons
   const getLocationIcon = (locationName: string) => {
@@ -24,15 +26,17 @@ const Locations = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#000000] relative">
+    <div className="min-h-screen bg-(--st-bg-page) relative">
       {/* Background Banner */}
       <div
         id="banner"
         className="absolute inset-0 min-h-[calc(100vh-80px)] w-full bg-no-repeat bg-center bg-cover"
-        style={{ backgroundImage: "url('/banner-bg.svg')" }}
+        style={{
+          backgroundImage: `url('${theme === "light" ? "/white-banner.png" : "/banner-bg.svg"}')`,
+        }}
       ></div>
 
-      <div className="relative z-10 min-h-screen flex flex-col justify-center items-center pt-20 pb-[230px]">
+      <div className="relative z-10 min-h-screen flex flex-col justify-center items-center pt-20 pb-57.5">
         <div className="w-full flex flex-col justify-center items-center mb-20">
           <PageName text="LOCATIONS" />
           <div className="w-60 md:w-96">
@@ -40,13 +44,12 @@ const Locations = () => {
             <PageHeading text="Care Locations" />
           </div>
         </div>
-        {/* Content layer */}
 
         <div className="w-full flex items-center justify-center px-4">
           <div
-            className="backdrop-blur-[28px] border border-[#282828] w-full md:w-[680px]"
+            className="backdrop-blur-[28px] border border-(--st-border) w-full md:w-170"
             style={{
-              background: "#000000B2",
+              background: "var(--st-bg-header)",
               borderRadius: "8px",
             }}
           >
@@ -55,7 +58,6 @@ const Locations = () => {
                 const isLastItem = index === LOCATIONS_DATA.length - 1;
 
                 const handleCardClick = () => {
-                  // Navigate to location detail page
                   if (item.slug) {
                     router.push(`/locations/${item.slug}`);
                   }
@@ -65,27 +67,29 @@ const Locations = () => {
                   <div
                     key={item.id ?? item.name}
                     onClick={handleCardClick}
-                    className="flex items-center w-full cursor-pointer hover:bg-[#101010] transition-colors"
+                    className="flex items-center w-full cursor-pointer hover:bg-(--st-bg-card-secondary) transition-colors"
                     style={{
                       width: "100%",
                       padding: "16px",
                       gap: "16px",
-                      borderBottom: !isLastItem ? "1px solid #282828" : "none",
+                      borderBottom: !isLastItem
+                        ? "1px solid var(--st-border)"
+                        : "none",
                     }}
                   >
                     <div
-                      className="bg-[#101010] border border-[#2a2a2a] rounded-lg flex items-center justify-center shrink-0 relative"
+                      className="bg-(--st-bg-card-secondary) border border-(--st-border) rounded-lg flex items-center justify-center shrink-0 relative"
                       style={{ width: "64px", height: "64px" }}
                     >
                       <img
                         src={getLocationIcon(item.name)}
                         alt={item.displayName}
-                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 brand-logo"
                         style={{ width: "28px", height: "28px" }}
                       />
                     </div>
                     <div className="flex flex-1 flex-col min-w-0">
-                      <p className="font-awesome text-[16px] text-white leading-normal whitespace-pre-wrap">
+                      <p className="font-awesome text-[16px] text-(--st-text-primary) leading-normal whitespace-pre-wrap">
                         {item.displayName}
                       </p>
                     </div>
@@ -114,11 +118,7 @@ const Locations = () => {
           />
         </div>
 
-        <div
-          className="flex flex-row h-fit justify-center items-center relative top-24
-      sm: bg-stblack  
-      "
-        >
+        <div className="flex flex-row h-fit justify-center items-center relative top-24">
           <LogoMarquee />
         </div>
       </div>

@@ -6,19 +6,30 @@ const FeatureSection = () => {
     {
       icon: "/featureIcon/pen-tool-03.svg",
       title: "Craftsmanship",
-     description: ["Precision, detail,",  "and artistry", <br key="2" />,"in every polish."],
-      
+      description: [
+        "Precision, detail,",
+        "and artistry",
+        <br key="2" />,
+        "in every polish.",
+      ],
     },
     {
       icon: "/featureIcon/elements.svg",
       title: "Luxury",
-      description:[
-        "A discreet, premium service tailored ",<br key="2" />,"for ultra-luxury homes."],
+      description: [
+        "A discreet, premium service tailored ",
+        <br key="2" />,
+        "for ultra-luxury homes.",
+      ],
     },
     {
       icon: "/featureIcon/elements1.svg",
       title: "Preservation",
-      description: ["Protecting the beauty of marble ",<br key="2" />,"to stand the test of time."],
+      description: [
+        "Protecting the beauty of marble ",
+        <br key="2" />,
+        "to stand the test of time.",
+      ],
     },
   ];
 

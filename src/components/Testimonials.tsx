@@ -20,14 +20,14 @@ const Testimonials = () => {
             return (
               <div key={index} className="rounded overflow-hidden ">
                 <img className="" key={index} src={item.imagePath} alt={""} />
-                <div className="flex flex-col justify-between items-start h-[120px]  md:h-[12.8rem] w-90  p-4 md:p-6 relative -top-32 left-4 md:-top-56 md:left-6 rounded bg-[#00000080] backdrop-blur-[56px]">
+                <div className="flex flex-col justify-between items-start h-30 md:h-[12.8rem] w-90 p-4 md:p-6 relative -top-32 left-4 md:-top-56 md:left-6 rounded bg-(--st-bg-header) backdrop-blur-[56px]">
                   <div className="">
-                    <h2 className="font-awesome font-extralight!important text-[18px] text-white md:text-2xl">
+                    <h2 className="font-awesome font-extralight!important text-[18px] text-(--st-text-primary) md:text-2xl">
                       {item.quote}
                     </h2>
                   </div>
                   <div className="text-start">
-                    <h1 className="text-xs md:text-sm font-semibold text-transparent bg-clip-text bg-[linear-gradient(135deg,#FFFFFF_25%,#9C9C9C_43.31%,#D7D7D7_78.64%)]">
+                    <h1 className="text-xs md:text-sm font-semibold text-transparent bg-clip-text banner-heading-gradient">
                       {item.author.toUpperCase()}
                     </h1>
                   </div>

@@ -18,31 +18,24 @@ const ClientCard: React.FC<ClientCardProps> = ({
   buttonText = "READ NOW",
 }) => {
   return (
-    <div className="w-full max-w-[440px] md:w-[440px] h-[600px] mx-auto md:mx-4 mb-4 border border-[#2E2E2E] rounded-xl p-4 bg-black text-white">
+    <div className="w-full max-w-110 md:w-110 h-150 mx-auto md:mx-4 mb-4 border border-(--st-border) rounded-xl p-4 bg-(--st-bg-card) text-(--st-text-primary)">
       <div
-        className="w-full  h-[180px] overflow-hidden rounded-lg bg-center bg-contain  "
+        className="w-full h-45 overflow-hidden rounded-lg bg-center bg-contain"
         style={{
           backgroundImage: `url(${image})`,
           height: "220px",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           backgroundSize: "contain",
-          // width: "100%",
         }}
-      >
-        {/* <img
-          src={image}
-          alt="testimonial"
-          className="w-full h-full object-contain"
-        /> */}
-      </div>
+      ></div>
       <div className="h-48 overflow-y-auto scroll-container ">
         <p className="text-[16px] pt-4">{description}</p>
       </div>
-      <div className="bg-linear-to-t from-black to-transparent w-full h-10 relative -top-10 z-10 "></div>
+      <div className="bg-linear-to-t from-(--st-bg-card) to-transparent w-full h-10 relative -top-10 z-10 "></div>
       <div className="-mt-10 ">
         <h1 className="font-awesome font-[175] text-2xl py-4">{name}</h1>
-        <p className="text-[16px] text-white opacity-50">{designationText}</p>
+        <p className="text-[16px] text-(--st-text-muted)">{designationText}</p>
       </div>
     </div>
   );

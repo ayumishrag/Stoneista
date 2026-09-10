@@ -18,7 +18,7 @@ import VisionRana2 from "@/components/VisionRana2";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center bg-stblack font-sans">
+    <div className="flex flex-col items-center justify-center bg-(--st-bg-page) font-sans">
       <Banner />
       <FeatureSection />
       <Services1 />
@@ -29,7 +29,7 @@ export default function Home() {
 
       {/* <VisionRana2 /> */}
       <VisionSection />
-       
+
       {/* <Catalog /> */}
       <ClientWords />
 

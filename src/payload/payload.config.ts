@@ -10,17 +10,14 @@ import { Users } from './collections/Users';
 import { Media } from './collections/Media';
 import { Posts } from './collections/Posts';
 
-import { Logo } from './components/Logo';
-import { Icon } from './components/Icon';
-
 export default buildConfig({
   secret: process.env.PAYLOAD_SECRET || 'super-secret-key-123456',  // FIX MISSING SECRET
   admin: {
     user: Users.slug,
     components: {
       graphics: {
-        Logo,
-        Icon,
+        Logo: '@/payload/components/Logo#Logo',
+        Icon: '@/payload/components/Icon#Icon',
       },
     },
   },
@@ -39,12 +36,12 @@ export default buildConfig({
     defaultFromAddress: 'no-reply@stoneista.com',
     defaultFromName: 'Stone Ista',
     transportOptions: {
-      host: "smtp.gmail.com",   // e.g. "smtp.gmail.com" or "smtp-relay.brevo.com"
+      host: "smtp.gmail.com",
       port: Number(process.env.SMTP_PORT) || 587,
-      secure: false,                 // true if you use port 465
+      secure: false,
       auth: {
-        user: "edquestsocial@gmail.com", // SMTP username
-        pass: "rklwbmncxmsiqtxi", // SMTP password or API key
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
     },
   }),

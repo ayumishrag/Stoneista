@@ -9,7 +9,7 @@ import ClientCard from "./ClientCard";
 
 const ClientWords = () => {
   return (
-    <div className="w-full py-20 -mt-[275px] md:-mt-[50px] bg-black">
+    <div className="w-full py-20 -mt-68.75 md:-mt-12.5 bg-(--st-bg-page)">
       <div className="w-full flex flex-col justify-center items-center mb-20">
         <PageName text="CLIENT WORDS" />
         <PageHeading text="What our prestigious clients" />
@@ -17,17 +17,8 @@ const ClientWords = () => {
       </div>
       <div className="w-full">
         <div className="hidden md:flex flex-row justify-center items-center  ">
-          {/* <Marquee gradient={true} gradientColor={"#000000"} gradientWidth={88} pauseOnHover={true}> */}
-          <div className="overflow-hidden w-full max-w-4xl md:w-[900px] rounded-2xl ">
-            {" "}
-            {/* shows only 2 cards */}
-            <Marquee
-              speed={50}
-              pauseOnHover={true}
-              gradient={true}
-              gradientWidth={80}
-              gradientColor="#000000"
-            >
+          <div className="overflow-hidden w-full max-w-4xl md:w-225 rounded-2xl ">
+            <Marquee speed={50} pauseOnHover={true} gradient={false}>
               {CLIENT_DATA.map((item, index) => {
                 return (
                   <ClientCard
@@ -44,31 +35,10 @@ const ClientWords = () => {
           </div>
         </div>
 
-        {/* <div className="md:hidden flex-col gap-4">
-          {CLIENT_DATA.map((item, index) => {
-            return (
-              <ClientCard
-                  key={index}
-                  image={item.imagePath}
-                  name={item.name}
-                  description={item.description}
-                  designationText={item.designationText}
-                  buttonText={'Read More'}
-
-                />
-            );
-          })}
-        </div> */}
         <div className="md:hidden w-full overflow-hidden">
-          <Marquee
-            speed={40}
-            pauseOnHover={true}
-            gradient={true}
-            gradientColor="#000000"
-            gradientWidth={60}
-          >
+          <Marquee speed={40} pauseOnHover={true} gradient={false}>
             {CLIENT_DATA.map((item, index) => (
-              <div className="w-[330px] mx-4">
+              <div className="w-82.5 mx-4">
                 <ClientCard
                   key={index}
                   image={item.imagePath}

@@ -17,7 +17,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
   buttonText = "READ NOW",
 }) => {
   return (
-    <div className="max-w-xl mx-4 mb-4 border border-[#262626] p-4 bg-black text-white bg-[url('/blog-bg.svg')] bg-no-repeat bg-[position:bottom_right] h-[400px]  ">
+    <div className="max-w-xl mx-4 mb-4 border border-(--st-border) p-4 bg-(--st-bg-card) text-(--st-text-primary) bg-[url('/blog-bg.svg')] bg-no-repeat bg-position-[bottom_right] h-100">
       <div className="overflow-hidden">
         <img
           src={image}

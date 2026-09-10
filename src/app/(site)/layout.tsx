@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import localFont from "next/font/local";
 import { PopupProvider } from "@/components/PopupContext";
 import Popup from "@/components/Popup";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 const figTree = localFont({
   src: "../../../public/fonts/Figtree-VariableFont_wght.ttf",
@@ -43,14 +44,33 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-stblack">
-      <body className={`${awesomeSerif.variable} ${figTree.variable} w-screen`}>
-        <PopupProvider>
-          <Header />
-          <div className="mt-20">{children}</div>
-          <Footer />
-          <Popup />
-        </PopupProvider>
+    <html
+      lang="en"
+      style={{
+        background: "var(--st-bg-page)",
+        color: "var(--st-text-primary)",
+      }}
+      suppressHydrationWarning
+    >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('stoneista-theme');if(t==='light'){document.documentElement.classList.add('light');}else if(!t&&!window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.classList.add('light');}}catch(e){}})();`,
+          }}
+        />
+      </head>
+      <body
+        className={`${awesomeSerif.variable} ${figTree.variable} w-screen`}
+        suppressHydrationWarning
+      >
+        <ThemeProvider>
+          <PopupProvider>
+            <Header />
+            <div className="mt-20">{children}</div>
+            <Footer />
+            <Popup />
+          </PopupProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -22,8 +22,11 @@ const PageHeading: React.FC<PageHeadingProps> = ({ text, width }) => {
           inline-block
           text-transparent
           bg-clip-text
-          bg-[linear-gradient(135deg,#FFFFFF_50%,#9C9C9C_33.64%,#D7D7D7_33.64%)]
         "
+      style={{
+        backgroundImage:
+          "linear-gradient(135deg, var(--st-text-secondary) 50%, var(--st-text-muted) 33.64%, var(--st-text-primary) 33.64%)",
+      }}
     >
       {text}
     </h1>

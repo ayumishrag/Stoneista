@@ -11,7 +11,6 @@ const PageHeading: React.FC<PageHeadingProps> = ({ text, width }) => {
       className="
           text-[32px]
           md:text-[32px]
-           text-[#C5C5C5]
           leading-12
           md:leading-16
           font-[175]
@@ -21,8 +20,11 @@ const PageHeading: React.FC<PageHeadingProps> = ({ text, width }) => {
           inline-block
           text-transparent
           bg-clip-text
-          bg-[linear-gradient(135deg,#FFFFFF_25%,#9C9C9C_43.31%,#D7D7D7_78.64%)]
         "
+      style={{
+        backgroundImage:
+          "linear-gradient(135deg, var(--st-text-secondary) 25%, var(--st-text-muted) 43.31%, var(--st-text-primary) 78.64%)",
+      }}
     >
       {text}
     </h1>

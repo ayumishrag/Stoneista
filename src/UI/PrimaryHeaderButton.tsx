@@ -13,10 +13,10 @@ const PrimaryHeaderButton: React.FC<PrimaryButtonProps> = ({
   return (
     <button
       onClick={onClick}
-      className="   text-xs font-extrabold bg-stbuttonbg px-4 h-10
+      className="text-xs font-extrabold bg-(--st-btn-bg) px-4 h-10
     border border-solid
     [border-image-source:linear-gradient(90deg,#F8AC75_0%,#926545_100%)]
-    [border-image-slice:1] text-white cursor-pointer"
+    [border-image-slice:1] text-(--st-btn-text) cursor-pointer"
     >
       {text.toUpperCase()}
     </button>

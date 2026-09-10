@@ -8,20 +8,16 @@ type PageHeadingProps = {
 const PopupText: React.FC<PageHeadingProps> = ({ text, width }) => {
   return (
     <h1
-      className="  
-      
+      className="
           text-[15px]
-          
           md:text-[18px]
-          
-          
           font-awesome
           w-full
           text-center
           inline-block
           text-transparent
           bg-clip-text
-          bg-[linear-gradient(135deg,#FFFFFF_50%,#9C9C9C_33.64%,#D7D7D7_33.64%)]
+          page-heading-2-gradient
         "
     >
       {text}
